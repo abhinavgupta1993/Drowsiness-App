@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Drowsiness App</string>
+    <string name="test">By creating an account or logging in,you agree to our <u>Terms and Conditions</u> and <u>Privacy Policy</u></string>
 </resources>
