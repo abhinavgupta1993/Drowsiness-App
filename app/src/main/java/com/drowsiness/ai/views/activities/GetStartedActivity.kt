@@ -1,47 +1,42 @@
 package com.drowsiness.ai.views.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.drowsiness.ai.R
 import com.drowsiness.ai.databinding.ActivityGetStartedBinding
-import com.drowsiness.ai.databinding.ActivitySplashBinding
+import com.drowsiness.ai.helper.Constants
 
 class GetStartedActivity : AppCompatActivity() {
 
-    lateinit var getStartedBinding: ActivityGetStartedBinding
-    lateinit var iv1:ImageView
-    lateinit var iv2:ImageView
-    lateinit var iv3:ImageView
-    lateinit var viewPager2: ViewPager2
+    private lateinit var getStartedBinding: ActivityGetStartedBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getStartedBinding = ActivityGetStartedBinding.inflate(layoutInflater)
         setContentView(getStartedBinding.root)
-        getStartedBinding.button.setOnClickListener {
-//            var intent = Intent(this, SplashActivity::class.java)
-            startActivity(Intent(this,MainActivity::class.java))
+
+        getStartedBinding.btCreateAccount.typeface = Constants.customTypefaceNunitoRegular(this)
+        getStartedBinding.btCreateAccount.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
-        getStartedBinding.button2.setOnClickListener {
-//            var intent = Intent(this, SplashActivity::class.java)
-            startActivity(Intent(this,MainActivity::class.java))
+        getStartedBinding.btLogIn.typeface = Constants.customTypefaceNunitoRegular(this)
+        getStartedBinding.btLogIn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
+        getStartedBinding.tvTerms.typeface = Constants.customTypefaceNunitoRegular(this)
+        getStartedBinding.tvAppName.typeface = Constants.customTypefaceNunitoRegular(this)
 
+        val images = listOf(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher)
+        val adapter = ViewPagerAdapter(images)
+        getStartedBinding.viewPager.adapter = adapter
 
-        viewPager2=findViewById(R.id.view_pager2)
-        iv1=findViewById(R.id.iv1)
-        iv2=findViewById(R.id.iv2)
-        iv3=findViewById(R.id.iv3)
-
-        val images= listOf(R.drawable.phone,R.drawable.images,R.drawable.cardriving)
-        val adapter=ViewPagerAdapter(images)
-        viewPager2.adapter=adapter
-
-        viewPager2.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
+        getStartedBinding.viewPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -61,30 +56,69 @@ class GetStartedActivity : AppCompatActivity() {
             }
 
         })
-
-
-
-
     }
     fun changeColor(){
-        when(viewPager2.currentItem){
-            0->
-            {
-                iv1.setBackgroundColor(applicationContext.resources.getColor(R.color.active,theme))
-                iv2.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
-                iv3.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
+        when (getStartedBinding.viewPager.currentItem) {
+            0 -> {
+                getStartedBinding.image1.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.active
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image2.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image3.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
             }
-            1->
-            {
-                iv1.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
-                iv2.setBackgroundColor(applicationContext.resources.getColor(R.color.active))
-                iv3.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
+
+            1 -> {
+                getStartedBinding.image1.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image2.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.active
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image3.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
             }
-            2->
-            {
-                iv1.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
-                iv2.setBackgroundColor(applicationContext.resources.getColor(R.color.red_200))
-                iv3.setBackgroundColor(applicationContext.resources.getColor(R.color.active))
+            2-> {
+                getStartedBinding.image1.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image2.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.red_200
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
+                getStartedBinding.image3.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.active
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY
+                )
             }
         }
     }
