@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.drowsiness.ai.R
 import com.drowsiness.ai.databinding.ActivityGetStartedBinding
@@ -16,8 +17,7 @@ class GetStartedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getStartedBinding = ActivityGetStartedBinding.inflate(layoutInflater)
-        setContentView(getStartedBinding.root)
+        getStartedBinding = DataBindingUtil.setContentView(this, R.layout.activity_get_started)
 
         getStartedBinding.btCreateAccount.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.btCreateAccount.setOnClickListener {
