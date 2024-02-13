@@ -20,12 +20,12 @@ class GetStartedActivity : AppCompatActivity() {
 
         getStartedBinding.btCreateAccount.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.btCreateAccount.setOnClickListener {
-            startActivity(Intent(this, Signup::class.java))
+            startActivity(Intent(this, SignupActivity::class.java))
         }
 
         getStartedBinding.btLogIn.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.btLogIn.setOnClickListener {
-            startActivity(Intent(this, Signup::class.java))
+            startActivity(Intent(this, SignupActivity::class.java))
         }
 
         getStartedBinding.tvTerms.typeface = Constants.customTypefaceNunitoRegular(this)

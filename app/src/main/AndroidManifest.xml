@@ -13,11 +13,9 @@
         android:theme="@style/Theme.DrowsinessApp.NoAction"
         tools:targetApi="31" >
         <activity
-            android:name=".views.activities.Signup"
+            android:name=".views.activities.SignupActivity"
             android:exported="false" />
-        <activity
-            android:name=".views.activities.Signup"
-            android:exported="false" />
+
         <activity
             android:name=".views.activities.SplashActivity"
             android:exported="true"
