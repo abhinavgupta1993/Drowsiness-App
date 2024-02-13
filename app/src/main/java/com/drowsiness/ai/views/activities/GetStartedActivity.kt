@@ -2,6 +2,7 @@ package com.drowsiness.ai.views.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -25,7 +26,8 @@ class GetStartedActivity : AppCompatActivity() {
 
         getStartedBinding.btLogIn.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.btLogIn.setOnClickListener {
-            startActivity(Intent(this, SignupActivity::class.java))
+//            startActivity(Intent(this, SignupActivity::class.java))
+            Toast.makeText(this, "In Progress", Toast.LENGTH_SHORT).show()
         }
 
         getStartedBinding.tvTerms.typeface = Constants.customTypefaceNunitoRegular(this)
