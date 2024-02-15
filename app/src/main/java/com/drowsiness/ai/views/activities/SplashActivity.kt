@@ -10,7 +10,7 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import com.drowsiness.ai.databinding.ActivitySplashBinding
-
+// test
 class SplashActivity : AppCompatActivity() {
 
     lateinit var splashBinding: ActivitySplashBinding
