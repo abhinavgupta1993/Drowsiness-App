@@ -11,6 +11,8 @@ import com.drowsiness.ai.R
 // name - Abhinav Gupta
 // created at 13th Feb 2024
 
+
+// Common class
 class Constants {
 
     companion object {
@@ -18,28 +20,35 @@ class Constants {
             return ResourcesCompat.getFont(context.applicationContext, R.font.n_bold)!!
         }
 
+        // is email valid or not
         fun isEmailValid(emailAddress: String): Boolean {
             return Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()
         }
+
+        // is name having at least 3 characters
         fun isNameLengthGreaterThan3(name: String): Boolean {
             return name.length >= 3
         }
 
+        // is password empty or less than or equals to 8
         fun isPasswordEmpty(password: String): Boolean{
             return password.length >= 8
         }
 
+        // is password and confirm password matches?
         fun isPasswordMatch(password : String, confirmPassword: String): Boolean{
             return password.equals(confirmPassword)
         }
 
+        // getting device id
         @SuppressLint("HardwareIds")
         fun getDeviceID(context: Context): String {
-            return Settings.Secure.getString(
-                context.contentResolver, Settings.Secure.ANDROID_ID
+//            here we fetched the device id and using the context
+            return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID
             )
         }
 
+        // showing ProgressDialog
         fun showDialog(context: Context?, isDialog: Boolean) {
             if (isDialog) {
                 if (context != null) {
@@ -48,6 +57,7 @@ class Constants {
             }
         }
 
+        // dismiss ProgressDialog
         fun dismissDialog(isDialog: Boolean) {
             if (isDialog) {
                 ProgressDialog.dismiss()

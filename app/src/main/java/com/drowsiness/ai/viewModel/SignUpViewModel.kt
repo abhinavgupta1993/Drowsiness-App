@@ -1,5 +1,7 @@
 package com.drowsiness.ai.viewModel
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.drowsiness.ai.helper.Constants
@@ -17,12 +19,16 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewModel() {
 
+    //Inputs variables by which come from user
     var inputEmail: MutableLiveData<String> = MutableLiveData()
     var inputName: MutableLiveData<String> = MutableLiveData()
     var inputPassword: MutableLiveData<String> = MutableLiveData()
     var inputConfirmPassword: MutableLiveData<String> = MutableLiveData()
 
+    // toast message acc to condition type
     val toastMessage = MutableLiveData<String>()
+
+    // take values in boolean
     private val isValidEmail = MutableLiveData<Boolean>()
     private val isValidName = MutableLiveData<Boolean>()
     private val isValidPassword = MutableLiveData<Boolean>()
@@ -31,6 +37,7 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
 
     var deviceIdd: String? = null
 
+    // when SignUpViewModel calls these values will have default values
     init {
         isValidEmail.value = false
         isValidName.value = false
@@ -39,29 +46,32 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
         dialogCondition.value = false
     }
 
+    // getting device ID by connecting the activity
     fun getDeviceID(deviceId: String) {
         deviceIdd = deviceId
     }
 
     fun onClick() {
 
+        // here we are checking the conditions and having values in boolean
         if (isValidEmail.value == Constants.isEmailValid(inputEmail.value.toString())) {
             toastMessage.value = "Email should be in format"
             inputName.value = ""
+            // checking is name having at least 3 chars
         } else if (isValidName.value == isNameLengthGreaterThan3(inputName.value.toString())) {
             toastMessage.value = "Name should have at least 3 characters"
+            // checking is password empty or less than or equals to 8
         } else if (isValidPassword.value == Constants.isPasswordEmpty(inputPassword.value.toString())) {
             toastMessage.value = "Password should have at least 8 characters"
+            // checking is password empty or less than 8 chars
         } else if (isValidConfirmPassword.value == Constants.isPasswordEmpty(inputConfirmPassword.value.toString())) {
             toastMessage.value = "Confirm Password should have at least 8 characters"
         } else {
-            if (!isPasswordMatch(
-                    inputPassword.value.toString(),
-                    inputConfirmPassword.value.toString()
-                )
-            ) {
+            // checking is password and confirm password matches?
+            if (!isPasswordMatch(inputPassword.value.toString(), inputConfirmPassword.value.toString())) {
                 toastMessage.value = "Password does not matched"
             } else {
+                // hitting API and getting response for SIGNUP API..
                 drowsinessSignup(inputConfirmPassword.value.toString())
             }
         }
@@ -77,7 +87,7 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
             password = confirmPassword
         )
 
-        CoroutineScope(Dispatchers.IO).launch {
+//        CoroutineScope(Dispatchers.IO).launch {
             drowsinessRepository.getSignup(signUpRequest, object :
                 DrowsinessRepository.APIResponseListener<SignUpResponse?> {
 
@@ -102,6 +112,10 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
                             dialogCondition.value = false
                             toastMessage.value = response.msg
                         }
+                        else -> {
+                            dialogCondition.value = false
+                            Log.e("ViewMODEL", "else ${response?.success}")
+                        }
                     }
                 }
 
@@ -110,6 +124,6 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
                     dialogCondition.value = false
                 }
             })
-        }
+//        }
     }
 }

@@ -37,11 +37,16 @@ class SignupActivity : AppCompatActivity(){
         signupBinding.welcome3.typeface = Constants.customTypefaceNunitoRegular(this)
         signupBinding.signup.typeface = Constants.customTypefaceNunitoRegular(this)
 
+        // here connected by viewModel and activity
+        // why we did that? because when we fetch device ID it needs context of the class so viewModel do not have
+        // the context of the class activity have here "this"
         signUpViewModel?.getDeviceID(Constants.getDeviceID(this))
 
+        // here we are generating the Toast messages
         signUpViewModel?.toastMessage?.observe(this) { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
+
 
         signUpViewModel?.dialogCondition?.observe(this) { condition ->
             if (condition) {

@@ -26,8 +26,7 @@ class GetStartedActivity : AppCompatActivity() {
 
         getStartedBinding.btLogIn.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.btLogIn.setOnClickListener {
-//            startActivity(Intent(this, SignupActivity::class.java))
-            Toast.makeText(this, "In Progress", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         getStartedBinding.tvTerms.typeface = Constants.customTypefaceNunitoRegular(this)

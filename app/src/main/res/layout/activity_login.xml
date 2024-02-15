@@ -81,7 +81,7 @@ modified at - 13th Feb 2024
                     android:hint="Email Address"
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
-                    android:text="@={LoginViewModel.inputEmail}"
+                    android:text="@={loginViewModel.inputLoginEmail}"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
                 <ImageView
@@ -112,7 +112,7 @@ modified at - 13th Feb 2024
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:padding="12dp"
-                        android:text="@={LoginViewModel.inputPassword}"
+                        android:text="@={loginViewModel.inputLoginPassword}"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
                     <ImageView
@@ -138,7 +138,7 @@ modified at - 13th Feb 2024
             android:drawablePadding="8dp"
             android:gravity="center"
             android:padding="10dp"
-            android:onClick="@{() -> LoginViewModel.onClick()}"
+            android:onClick="@{() -> loginViewModel.onClick()}"
             android:text="LOGIN"
             android:textColor="@color/white"
             android:textSize="16sp"

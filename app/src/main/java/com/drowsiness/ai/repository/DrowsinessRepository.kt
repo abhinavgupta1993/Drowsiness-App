@@ -1,5 +1,6 @@
 package com.drowsiness.ai.repository
 
+import android.util.Log
 import com.drowsiness.ai.model.signup.SignUpRequest
 import com.drowsiness.ai.model.signup.SignUpResponse
 import com.drowsiness.ai.retrofit.APIService
@@ -18,6 +19,8 @@ class DrowsinessRepository(private val apiService: APIService) {
         signUpRequest: SignUpRequest,
         apiResponseListener: APIResponseListener<SignUpResponse?>
     ) {
+        Log.e("getSignup", "SignUpRequest ${Gson().toJson(signUpRequest)}")
+
         val result = apiService.signup(signUpRequest)
         result.enqueue(object : Callback<SignUpResponse> {
             override fun onResponse(
@@ -27,6 +30,8 @@ class DrowsinessRepository(private val apiService: APIService) {
                 if (response.body() != null) {
                     apiResponseListener.onReceiveResponse(response.body()!!)
                     println("SignUpResponse - ${Gson().toJson(response.body())}")
+                } else {
+                    println("SignUpResponse ELSE - ${Gson().toJson(response.body())}")
                 }
             }
 
