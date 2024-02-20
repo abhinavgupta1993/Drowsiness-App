@@ -1,8 +1,9 @@
-package com.drowsiness.ai.viewModel
+package com.drowsiness.ai.viewModel.modelFactories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.drowsiness.ai.repository.DrowsinessRepository
+import com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel
 import java.lang.IllegalArgumentException
 
 // name - Abhinav Gupta

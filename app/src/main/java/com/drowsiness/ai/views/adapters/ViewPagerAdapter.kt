@@ -1,4 +1,4 @@
-package com.drowsiness.ai.views.activities
+package com.drowsiness.ai.views.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +15,12 @@ class ViewPagerAdapter(private val images:List<Int>):
         val imageView:ImageView=itemView.findViewById(R.id.ivImage)
 
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.ViewPagerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
         return ViewPagerViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewPagerAdapter.ViewPagerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         val curImage=images[position]
         holder.imageView.setImageResource(curImage)
     }
