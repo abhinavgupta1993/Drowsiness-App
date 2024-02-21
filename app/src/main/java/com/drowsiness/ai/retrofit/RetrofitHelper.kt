@@ -43,7 +43,3 @@ object RetrofitHelper {
     }
 
 }
-
-//1. ldki kabil
-//2. papa civil engg.
-//3. Father financial stable hai...
