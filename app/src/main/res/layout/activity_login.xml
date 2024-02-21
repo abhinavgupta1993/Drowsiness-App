@@ -8,7 +8,7 @@ modified at - 13th Feb 2024
     <data>
         <variable
             name="loginViewModel"
-            type="com.drowsiness.ai.viewModel.LoginViewModel" />
+            type="com.drowsiness.ai.viewModel.viewmodels.LoginViewModel" />
     </data>
     <RelativeLayout
         android:id="@+id/rl"
@@ -33,6 +33,7 @@ modified at - 13th Feb 2024
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/ic_sketch" />
+
             <TextView
                 android:id="@+id/welcome2"
                 android:layout_width="wrap_content"

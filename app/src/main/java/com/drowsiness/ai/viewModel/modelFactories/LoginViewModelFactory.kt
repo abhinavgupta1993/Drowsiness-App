@@ -1,8 +1,8 @@
-package com.drowsiness.ai.viewModel
+package com.drowsiness.ai.viewModel.modelFactories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.drowsiness.ai.repository.DrowsinessRepository
+import com.drowsiness.ai.viewModel.viewmodels.LoginViewModel
 
 class LoginViewModelFactory() : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

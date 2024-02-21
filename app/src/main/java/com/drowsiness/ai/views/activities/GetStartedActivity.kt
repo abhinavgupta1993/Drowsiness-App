@@ -2,7 +2,6 @@ package com.drowsiness.ai.views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -10,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.drowsiness.ai.R
 import com.drowsiness.ai.databinding.ActivityGetStartedBinding
 import com.drowsiness.ai.helper.Constants
+import com.drowsiness.ai.views.adapters.ViewPagerAdapter
 
 class GetStartedActivity : AppCompatActivity() {
 

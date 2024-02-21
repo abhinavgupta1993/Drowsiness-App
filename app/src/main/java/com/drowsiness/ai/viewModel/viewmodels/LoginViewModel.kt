@@ -1,7 +1,6 @@
-package com.drowsiness.ai.viewModel
+package com.drowsiness.ai.viewModel.viewmodels
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.drowsiness.ai.helper.Constants
@@ -17,10 +16,12 @@ class LoginViewModel : ViewModel() {
 
     // toast message acc to condition type
     val toastMessage = MutableLiveData<String>()
+    val readyToLogin = MutableLiveData<Boolean>()
 
     init {
         isValidEmail.value = false
         isValidPassword.value = false
+        readyToLogin.value = false
     }
 
     // login result q lena h abhi jb tk aap logo ne user se input nhi liya????
@@ -37,6 +38,7 @@ class LoginViewModel : ViewModel() {
         } else {
 
             toastMessage.value = "All conditions matched"
+            readyToLogin.value = true
 
                 // hitting API and getting response for SIGNUP API..
 //                drowsinessSignup(inputConfirmPassword.value.toString())

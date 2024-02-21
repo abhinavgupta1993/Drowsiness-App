@@ -1,4 +1,4 @@
-package com.drowsiness.ai.viewModel
+package com.drowsiness.ai.viewModel.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -86,7 +86,7 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
             password = confirmPassword
         )
 
-//        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             drowsinessRepository.getSignup(signUpRequest, object :
                 DrowsinessRepository.APIResponseListener<SignUpResponse?> {
 
@@ -123,6 +123,6 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
                     dialogCondition.value = false
                 }
             })
-//        }
+        }
     }
 }

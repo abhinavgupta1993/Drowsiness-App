@@ -10,8 +10,8 @@ import com.drowsiness.ai.helper.Constants
 import com.drowsiness.ai.repository.DrowsinessRepository
 import com.drowsiness.ai.retrofit.APIService
 import com.drowsiness.ai.retrofit.RetrofitHelper
-import com.drowsiness.ai.viewModel.SignUpViewModel
-import com.drowsiness.ai.viewModel.SignupViewModelFactory
+import com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel
+import com.drowsiness.ai.viewModel.modelFactories.SignupViewModelFactory
 
 
 // name - Abhinav Gupta
@@ -29,7 +29,8 @@ class SignupActivity : AppCompatActivity(){
         signUpViewModel =
             ViewModelProvider(this,
                 SignupViewModelFactory(DrowsinessRepository(RetrofitHelper.getInstance().create(
-                    APIService::class.java))))[SignUpViewModel::class.java]
+                    APIService::class.java)))
+            )[SignUpViewModel::class.java]
         signupBinding.signUpViewModel = signUpViewModel
         signupBinding.lifecycleOwner = this
 

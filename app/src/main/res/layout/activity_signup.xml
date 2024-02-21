@@ -11,7 +11,7 @@
 
         <variable
             name="signUpViewModel"
-            type="com.drowsiness.ai.viewModel.SignUpViewModel" />
+            type="com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel" />
     </data>
 
     <RelativeLayout
@@ -80,7 +80,9 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
+<!--
+@={signUpViewModel.inputEmail} = DATA BINDING with the View
+-->
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
