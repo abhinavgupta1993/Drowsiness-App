@@ -31,7 +31,7 @@ class DrowsinessRepository(private val apiService: APIService) {
                     apiResponseListener.onReceiveResponse(response.body()!!)
                     println("SignUpResponse - ${Gson().toJson(response.body())}")
                 } else {
-                    println("SignUpResponse ELSE - ${Gson().toJson(response.body())}")
+                    println("SignUpResponse ELSE - ${Gson().toJson(response.headers())}")
                 }
             }
 

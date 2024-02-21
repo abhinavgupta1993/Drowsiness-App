@@ -1,6 +1,5 @@
 package com.drowsiness.ai.viewModel
 
-import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -81,7 +80,7 @@ class SignUpViewModel(var drowsinessRepository: DrowsinessRepository) : ViewMode
     private fun drowsinessSignup(confirmPassword: String) {
         dialogCondition.value = true
         val signUpRequest = SignUpRequest(
-            email = inputEmail.value.toString(),
+            email = inputEmail.value.toString().trim(),
             name = inputName.value.toString(),
             deviceId = deviceIdd!!,
             password = confirmPassword

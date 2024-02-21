@@ -1,7 +1,11 @@
 package com.drowsiness.ai.retrofit
 
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 // name - Abhinav Gupta
@@ -10,12 +14,36 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitHelper {
 
     private const val BASE_URL = "http://3.110.14.254:8000/"
-
+    private var retrofit: Retrofit? = null
     fun getInstance() : Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+        if (retrofit == null) {
+            retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(
+                    GsonConverterFactory.create(
+                        GsonBuilder()
+                            .setLenient().create()
+                    )
+                )
+                .client(getOkHttpClient()).build()
+        }
+        return retrofit!!
+    }
+
+    private fun getOkHttpClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        return OkHttpClient.Builder()
+            .connectTimeout(100, TimeUnit.SECONDS)
+            .readTimeout(100, TimeUnit.SECONDS)
+//            .addInterceptor(httpLoggingInterceptor)
+            .addNetworkInterceptor(httpLoggingInterceptor)
             .build()
     }
 
 }
+
+//1. ldki kabil
+//2. papa civil engg.
+//3. Father financial stable hai...
