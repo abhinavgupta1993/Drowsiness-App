@@ -4,16 +4,21 @@ created at: 14/02/2024
 modified by - Abhinav Gupta
 modified at - 13th Feb 2024
 -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="loginViewModel"
             type="com.drowsiness.ai.viewModel.viewmodels.LoginViewModel" />
     </data>
+
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
@@ -83,14 +88,16 @@ modified at - 13th Feb 2024
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:text="@={loginViewModel.inputLoginEmail}"
+                    app:addTextChangedListener="@{loginViewModel.emailWatcher}"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="24dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginStart="24dp"
+                    android:src="@android:drawable/ic_dialog_email"
+                    app:tint="@color/purple_700" />
             </FrameLayout>
 
             <LinearLayout
@@ -114,14 +121,16 @@ modified at - 13th Feb 2024
                         android:inputType="textPassword"
                         android:padding="12dp"
                         android:text="@={loginViewModel.inputLoginPassword}"
+                        app:addTextChangedListener="@{loginViewModel.passwordWatcher}"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="25dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:layout_marginStart="25dp"
+                        android:src="@android:drawable/ic_secure"
+                        app:tint="@color/purple_700" />
                 </FrameLayout>
             </LinearLayout>
 

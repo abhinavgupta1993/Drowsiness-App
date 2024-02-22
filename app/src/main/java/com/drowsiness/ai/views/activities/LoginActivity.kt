@@ -2,6 +2,7 @@ package com.drowsiness.ai.views.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -39,6 +40,30 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
+        loginViewModel.emailCheckConditions.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    loginBinding.email.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    loginBinding.email.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    loginBinding.email.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
 
+        loginViewModel.passwordCheckConditions.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    loginBinding.password.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    loginBinding.password.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    loginBinding.password.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
     }
 }
