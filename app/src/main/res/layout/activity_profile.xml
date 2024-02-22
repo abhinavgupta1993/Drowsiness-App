@@ -6,7 +6,7 @@
 
     <data>
 
-<!--        if activity reference == ViewBinding
+<!--     if activity reference == ViewBinding
 else view model binding == Data binding-->
         <variable
             name="profileViewModel"
