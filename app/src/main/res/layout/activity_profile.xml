@@ -104,7 +104,8 @@ else view model binding == Data binding-->
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_full_name"
+                app:tint="@color/purple_700"/>
 
             <TextView
                 android:id="@+id/tvName"
@@ -160,7 +161,8 @@ else view model binding == Data binding-->
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@android:drawable/ic_dialog_email"
+                app:tint="@color/purple_700"/>
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -220,7 +222,8 @@ else view model binding == Data binding-->
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@android:drawable/stat_sys_phone_call"
+                app:tint="@color/purple_700" />
 
             <TextView
                 android:id="@+id/tvPhone"

@@ -1,5 +1,7 @@
 package com.drowsiness.ai.views.activities
 import android.os.Bundle
+import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,17 +12,18 @@ import com.drowsiness.ai.helper.Constants
 import com.drowsiness.ai.repository.DrowsinessRepository
 import com.drowsiness.ai.retrofit.APIService
 import com.drowsiness.ai.retrofit.RetrofitHelper
-import com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel
 import com.drowsiness.ai.viewModel.modelFactories.SignupViewModelFactory
+import com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel
 
 
 // name - Abhinav Gupta
 // created at 13th Feb 2024
 
-class SignupActivity : AppCompatActivity(){
+
+class SignupActivity : AppCompatActivity() {
 
     private lateinit var signupBinding: ActivitySignupBinding
-    private var signUpViewModel : SignUpViewModel? = null
+    private var signUpViewModel: SignUpViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,75 @@ class SignupActivity : AppCompatActivity(){
                 Constants.dismissDialog(true)
             }
         }
+
+        signUpViewModel?.emailCheckConditions?.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    signupBinding.email.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    signupBinding.email.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    signupBinding.email.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
+
+        signUpViewModel?.nameCheckConditions?.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    signupBinding.name.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    signupBinding.name.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    signupBinding.name.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
+
+        signUpViewModel?.passwordCheckConditions?.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    signupBinding.password.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    signupBinding.password.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    signupBinding.password.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
+
+        signUpViewModel?.confirmPasswordCheckConditions?.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    signupBinding.confirmPassword.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    signupBinding.confirmPassword.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    signupBinding.confirmPassword.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
+
+        signUpViewModel?.passwordMatchCheckConditions?.observe(this) {
+            Log.e("checkConditions", "checkConditions $it")
+            when (it) {
+                true -> {
+                    signupBinding.password.setBackgroundResource(R.drawable.bg_background_green)
+                    signupBinding.confirmPassword.setBackgroundResource(R.drawable.bg_background_green)
+                }
+                else ->{
+                    signupBinding.password.setBackgroundResource(R.drawable.bg_backgroung_red)
+                    signupBinding.confirmPassword.setBackgroundResource(R.drawable.bg_backgroung_red)
+//                    signupBinding.password.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+//                    signupBinding.confirmPassword.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                }
+            }
+        }
+
 
     }
 }
