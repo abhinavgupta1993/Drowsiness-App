@@ -6,8 +6,16 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.drowsiness.ai.helper.Constants
+import com.drowsiness.ai.model.login.LoginRequest
+import com.drowsiness.ai.model.login.LoginResponse
+import com.drowsiness.ai.model.signup.SignUpRequest
+import com.drowsiness.ai.model.signup.SignUpResponse
+import com.drowsiness.ai.repository.DrowsinessRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private var drowsinessRepository: DrowsinessRepository) : ViewModel() {
 
     val inputLoginEmail: MutableLiveData<String> = MutableLiveData()
     val inputLoginPassword: MutableLiveData<String> = MutableLiveData()
@@ -23,7 +31,11 @@ class LoginViewModel : ViewModel() {
     val readyToLogin = MutableLiveData<Boolean>()
 
     var emailCheckConditions = MutableLiveData<Boolean>()
+    var clickTheSign = MutableLiveData<Boolean>()
     var passwordCheckConditions = MutableLiveData<Boolean>()
+    val dialogCondition = MutableLiveData<Boolean>()
+    val status = MutableLiveData<Int>()
+
 
     val emailWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -60,6 +72,9 @@ class LoginViewModel : ViewModel() {
         isValidEmail.value = false
         isValidPassword.value = false
         readyToLogin.value = false
+        dialogCondition.value = false
+        clickTheSign.value = false
+        status.value = 0
     }
 
     // login result q lena h abhi jb tk aap logo ne user se input nhi liya????
@@ -90,12 +105,63 @@ class LoginViewModel : ViewModel() {
 
                 emailCheckConditions.value = true
                 passwordCheckConditions.value = true
-                toastMessage.value = "All conditions matched"
-                readyToLogin.value = true
+                login()
 
-                // hitting API and getting response for SIGNUP API..
-//                drowsinessSignup(inputConfirmPassword.value.toString())
             }
         }
     }
+
+    fun tvSignClick(){
+        clickTheSign.value = true
+    }
+
+    fun login(){
+        dialogCondition.value = true
+        val loginRequest = LoginRequest(
+            email = inputLoginEmail.value.toString().trim(),
+            password = inputLoginPassword.value.toString().trim()
+        )
+
+        CoroutineScope(Dispatchers.IO).launch {
+            drowsinessRepository.getLogin(loginRequest, object :
+                DrowsinessRepository.APIResponseListener<LoginResponse?> {
+
+                override fun onFailure() {
+                    dialogCondition.value = false
+                    toastMessage.value = "Server Error"
+                }
+                override fun onReceiveResponse(response: LoginResponse?) {
+                    status.value = response?.success
+                    when (response?.success) {
+                        200 -> {
+                            readyToLogin.value = true
+                            dialogCondition.value = false
+                            toastMessage.value = response.msg
+                        }
+
+                        201 -> {
+                            println("HEYMSG ${response.msg}")
+                            dialogCondition.value = false
+                            toastMessage.value = response.msg
+                        }
+
+                        202 -> {
+                            dialogCondition.value = false
+                            toastMessage.value = response.msg
+                        }
+                        else -> {
+                            dialogCondition.value = false
+                            Log.e("ViewMODEL", "else ${response?.success}")
+                        }
+                    }
+                }
+
+                override fun onStatusFailed(response: LoginResponse?) {
+                    println("onStatusFailed - FetchViaMobileRequest : " + response?.msg)
+                    dialogCondition.value = false
+                }
+            })
+        }
+    }
+
 }

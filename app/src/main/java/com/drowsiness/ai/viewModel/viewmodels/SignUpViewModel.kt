@@ -3,7 +3,6 @@ package com.drowsiness.ai.viewModel.viewmodels
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.drowsiness.ai.helper.Constants
@@ -30,6 +29,7 @@ class SignUpViewModel(private var drowsinessRepository: DrowsinessRepository) : 
 
     // toast message acc to condition type
     val toastMessage = MutableLiveData<String>()
+    val status = MutableLiveData<Int>()
 
     // take values in boolean
     private val isValidEmail = MutableLiveData<Boolean>()
@@ -44,6 +44,7 @@ class SignUpViewModel(private var drowsinessRepository: DrowsinessRepository) : 
     var passwordCheckConditions = MutableLiveData<Boolean>()
     var confirmPasswordCheckConditions = MutableLiveData<Boolean>()
     var passwordMatchCheckConditions = MutableLiveData<Boolean>()
+    var tvLoginHere = MutableLiveData<Boolean>()
 
     val emailWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -110,7 +111,9 @@ class SignUpViewModel(private var drowsinessRepository: DrowsinessRepository) : 
         isValidPassword.value = false
         isValidConfirmPassword.value = false
         dialogCondition.value = false
+        tvLoginHere.value = false
         inputName.value = ""
+        status.value = 0
     }
 
     // getting device ID by connecting the activity
@@ -166,7 +169,10 @@ class SignUpViewModel(private var drowsinessRepository: DrowsinessRepository) : 
                 }
             }
         }
+    }
 
+    fun tvLoginClick(){
+        tvLoginHere.value = true
     }
 
     private fun drowsinessSignup(confirmPassword: String) {
@@ -184,10 +190,10 @@ class SignUpViewModel(private var drowsinessRepository: DrowsinessRepository) : 
 
                 override fun onFailure() {
                     dialogCondition.value = false
-                    toastMessage.value = "Internet connection!"
+                    toastMessage.value = "Server Error"
                 }
-
                 override fun onReceiveResponse(response: SignUpResponse?) {
+                    status.value = response?.success
                     when (response?.success) {
                         200 -> {
                             dialogCondition.value = false

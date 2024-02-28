@@ -1,7 +1,7 @@
 package com.drowsiness.ai.views.activities
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,15 +15,13 @@ import com.drowsiness.ai.retrofit.RetrofitHelper
 import com.drowsiness.ai.viewModel.modelFactories.SignupViewModelFactory
 import com.drowsiness.ai.viewModel.viewmodels.SignUpViewModel
 
-
 // name - Abhinav Gupta
 // created at 13th Feb 2024
 
-
 class SignupActivity : AppCompatActivity() {
 
-    private lateinit var signupBinding: ActivitySignupBinding
-    private var signUpViewModel: SignUpViewModel? = null
+    lateinit var signupBinding: ActivitySignupBinding
+    var signUpViewModel: SignUpViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +35,6 @@ class SignupActivity : AppCompatActivity() {
         signupBinding.signUpViewModel = signUpViewModel
         signupBinding.lifecycleOwner = this
 
-        signupBinding.welcome2.typeface = Constants.customTypefaceNunitoRegular(this)
-        signupBinding.welcome3.typeface = Constants.customTypefaceNunitoRegular(this)
         signupBinding.signup.typeface = Constants.customTypefaceNunitoRegular(this)
 
         // here connected by viewModel and activity
@@ -51,6 +47,18 @@ class SignupActivity : AppCompatActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
+        signUpViewModel?.status?.observe(this) {
+            if (it == 200) {
+                finish()
+            }
+        }
+
+        signUpViewModel?.tvLoginHere?.observe(this){message->
+            if(message == true){
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
 
         signUpViewModel?.dialogCondition?.observe(this) { condition ->
             if (condition) {
@@ -127,7 +135,5 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 }

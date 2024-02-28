@@ -126,19 +126,6 @@
             android:textColor="@color/purple_700"
             android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/tvTerms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/test"
-            android:textColor="@color/red_200"
-            android:textSize="9sp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            />
-
     </LinearLayout>
 </RelativeLayout>
 </layout>

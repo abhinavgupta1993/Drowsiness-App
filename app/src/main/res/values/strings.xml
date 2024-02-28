@@ -5,4 +5,6 @@
     <string name="test2"><b>Phone</b></string>
     <string name="test3"><b>Email</b></string>
     <string name="test"><u><b>Sign Up</b></u></string>
+
+    <string name="login_have_account">Do not have an account?Click here to SignUp</string>
 </resources>

@@ -18,235 +18,116 @@
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher" />
-
-        <RelativeLayout
-            android:id="@+id/rl00"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/logo"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_sketch" />
-
-            <TextView
-                android:id="@+id/welcome2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="16dp"
-                android:gravity="center_vertical"
-                android:text="Get Started"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="normal" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/welcome3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl00"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:text="tag_line_of_the_app"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:textStyle="normal" />
+            android:src="@drawable/signup" />
 
         <LinearLayout
             android:id="@+id/rl_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/welcome3"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_below="@+id/logo"
+            android:layout_margin="16dp"
             android:orientation="vertical">
 
-            <FrameLayout
+            <EditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-<!--
-@={signUpViewModel.inputEmail} = DATA BINDING with the View
--->
-                <EditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/bg_edit_text"
-                    android:gravity="center"
-                    android:hint="Email Address"
-                    app:addTextChangedListener="@{signUpViewModel.emailWatcher}"
-                    android:inputType="textEmailAddress"
-                    android:padding="12dp"
-                    android:text="@={signUpViewModel.inputEmail}"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit_text1"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="6dp"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:text="@={signUpViewModel.inputEmail}"
+                android:textColor="@android:color/black"
+                app:addTextChangedListener="@{signUpViewModel.emailWatcher}" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="24dp"
-                    android:src="@android:drawable/ic_dialog_email"
-                    app:tint="@color/purple_700" />
-            </FrameLayout>
-
-            <LinearLayout
+            <EditText
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_edit_text1"
+                android:drawableStart="@drawable/logomale"
+                android:drawablePadding="6dp"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:text="@={signUpViewModel.inputName}"
+                android:textColor="@android:color/black"
+                app:addTextChangedListener="@{signUpViewModel.nameWatcher}" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@drawable/bg_edit_text"
-                        android:gravity="center"
-                        android:hint="Full Name"
-                        android:inputType="text"
-                        android:padding="12dp"
-                        android:text="@={signUpViewModel.inputName}"
-                        app:addTextChangedListener="@{signUpViewModel.nameWatcher}"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="25dp"
-                        android:src="@drawable/ic_full_name"
-                        app:tint="@color/purple_700" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_edit_text1"
+                android:drawableStart="@drawable/passwordicon"
+                android:drawableEnd="@drawable/eye"
+                android:drawablePadding="6dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:text="@={signUpViewModel.inputPassword}"
+                android:textColor="@android:color/black"
+                app:addTextChangedListener="@{signUpViewModel.passwordWatcher}" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@drawable/bg_edit_text"
-                        android:gravity="center"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:padding="12dp"
-                        android:text="@={signUpViewModel.inputPassword}"
-                        app:addTextChangedListener="@{signUpViewModel.passwordWatcher}"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="25dp"
-                        android:src="@android:drawable/ic_secure"
-                        app:tint="@color/purple_700" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <EditText
+                android:id="@+id/confirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_edit_text1"
+                android:drawableStart="@drawable/passwordicon"
+                android:drawableEnd="@drawable/eye"
+                android:drawablePadding="6dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:text="@={signUpViewModel.inputConfirmPassword}"
+                android:textColor="@android:color/black"
+                app:addTextChangedListener="@{signUpViewModel.confirmPasswordWatcher}" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/confirmPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@drawable/bg_edit_text"
-                        android:gravity="center"
-                        android:hint="Confirm Password"
-                        android:inputType="textPassword"
-                        android:padding="12dp"
-                        android:text="@={signUpViewModel.inputConfirmPassword}"
-                        app:addTextChangedListener="@{signUpViewModel.confirmPasswordWatcher}"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="25dp"
-                        android:src="@android:drawable/ic_secure"
-                        app:tint="@color/purple_700" />
-                </FrameLayout>
-            </LinearLayout>
         </LinearLayout>
 
-        <TextView
+        <Button
             android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_number"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="22dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="22dp"
-            android:background="@drawable/ripple"
-            android:drawablePadding="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
             android:gravity="center"
-            android:padding="10dp"
             android:onClick="@{() -> signUpViewModel.onClick()}"
-            android:text="Sign Up"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            android:translationZ="10dp" />
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp" />
+
 
         <TextView
+            android:id="@+id/tvLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/signup"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:onClick="@{()->signUpViewModel.tvLoginClick()}"
+            android:text="Already have a account?Login "
+            android:textColor="@color/purple_700"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </layout>

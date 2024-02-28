@@ -28,8 +28,6 @@ class GetStartedActivity : AppCompatActivity() {
         getStartedBinding.btLogIn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-
-        getStartedBinding.tvTerms.typeface = Constants.customTypefaceNunitoRegular(this)
         getStartedBinding.tvAppName.typeface = Constants.customTypefaceNunitoRegular(this)
 
         val images = listOf(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher)

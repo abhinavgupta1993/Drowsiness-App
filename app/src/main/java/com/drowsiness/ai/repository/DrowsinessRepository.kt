@@ -1,6 +1,8 @@
 package com.drowsiness.ai.repository
 
 import android.util.Log
+import com.drowsiness.ai.model.login.LoginRequest
+import com.drowsiness.ai.model.login.LoginResponse
 import com.drowsiness.ai.model.signup.SignUpRequest
 import com.drowsiness.ai.model.signup.SignUpResponse
 import com.drowsiness.ai.retrofit.APIService
@@ -43,6 +45,37 @@ class DrowsinessRepository(private val apiService: APIService) {
 
         })
     }
+
+    fun getLogin(
+        loginRequest: LoginRequest,
+        apiResponseListener: APIResponseListener<LoginResponse?>
+    ) {
+        Log.e("getLogin", "LoginRequest ${Gson().toJson(loginRequest)}")
+
+        val result = apiService.login(loginRequest)
+        result.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                if (response.body() != null) {
+                    apiResponseListener.onReceiveResponse(response.body()!!)
+                    println("LoginResponse - ${Gson().toJson(response.body())}")
+                } else {
+                    println("LoginResponse ELSE - ${Gson().toJson(response.headers())}")
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                println("LoginResponseFailure : $call")
+                t.printStackTrace()
+                apiResponseListener.onFailure()
+            }
+
+        })
+    }
+
+
 
     interface APIResponseListener<T> {
         fun onReceiveResponse(response: T)
