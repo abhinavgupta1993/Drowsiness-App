@@ -59,6 +59,21 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
 
-    kapt ("androidx.databinding:databinding-compiler:8.2.2")
+    kapt ("androidx.databinding:databinding-compiler:8.3.0")
+
+    // Face Detection
+    implementation ("com.google.mlkit:face-detection:16.1.6")
+
+    // CameraX
+    implementation ("androidx.camera:camera-core:1.3.1")
+    implementation ("androidx.camera:camera-camera2:1.3.1")
+    implementation ("androidx.camera:camera-lifecycle:1.3.1")
+    implementation ("androidx.camera:camera-video:1.3.1")
+    implementation ("androidx.camera:camera-view:1.3.1")
+    implementation ("androidx.camera:camera-mlkit-vision:1.3.0-beta02")
+    implementation ("androidx.camera:camera-extensions:1.3.1")
+
+    // CameraSource
+    implementation ("com.google.android.gms:play-services-vision-common:19.1.3")
+
 }
-// LOGIN KA CODE IS PROJECT ME LIKHO TB APNI REPO ME PUSH KRNA

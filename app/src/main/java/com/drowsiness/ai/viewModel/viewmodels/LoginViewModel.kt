@@ -105,6 +105,7 @@ class LoginViewModel(private var drowsinessRepository: DrowsinessRepository) : V
 
                 emailCheckConditions.value = true
                 passwordCheckConditions.value = true
+                readyToLogin.value = true
                 login()
 
             }

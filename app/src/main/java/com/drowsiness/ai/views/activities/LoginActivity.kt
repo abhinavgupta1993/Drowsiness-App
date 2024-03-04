@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.readyToLogin.observe(this, Observer { message ->
             if (message == true) {
-                startActivity(Intent(this, ProfileActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
         })
