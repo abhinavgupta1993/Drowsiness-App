@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.example.loginapp.viewModel.viewmodels.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="360dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/image" />
+        <RelativeLayout
+            android:id="@+id/rl00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal">
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="340dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:paddingHorizontal="16dp"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="40dp"
+                android:paddingStart="16dp"
+                android:text="@={loginViewModel.inputLoginEmail}"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                app:addTextChangedListener="@{loginViewModel.emailWatcher}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_edit_text"
+                        android:drawableStart="@drawable/passwordicon"
+                        android:drawableEnd="@drawable/Eye"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingBottom="40dp"
+                        android:textAlignment="textStart"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="12dp"
+                        android:text="@={loginViewModel.inputLoginPassword}"
+                        app:addTextChangedListener="@{loginViewModel.passwordWatcher}"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/rl_number"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="22dp"
+            android:background="@drawable/ripple"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:onClick="@{() ->loginViewModel.onClick()}"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:translationZ="10dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="20dp"
+            android:text="Don't have an account?"
+            android:layout_marginLeft="45dp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/purple_700"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="18dp"
+            android:text="@string/test"
+            android:layout_gravity="center"
+            android:layout_marginLeft="260dp"
+            android:textStyle="bold|normal"
+            android:textColor="#1612fa"
+            android:textSize="22dp"/>
+
+    </RelativeLayout>
+</layout>
+
