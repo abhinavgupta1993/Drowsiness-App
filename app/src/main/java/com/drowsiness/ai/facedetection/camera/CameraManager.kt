@@ -40,7 +40,7 @@ class CameraManager(
                     .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                     .build()
                     .also {
-                        it.setAnalyzer(cameraExecutor, CameraAnalyzer(graphicOverlay))
+                        it.setAnalyzer(cameraExecutor, CameraAnalyzer(graphicOverlay,context))
                     }
                 val cameraSelector = CameraSelector.Builder()
                     .requireLensFacing(cameraOption)

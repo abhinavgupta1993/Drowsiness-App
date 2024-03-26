@@ -25,6 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:checked="true"
                 app:trackTint="@drawable/newtrack"
                 app:thumbTint="@drawable/newthumb" />
 
@@ -39,7 +40,7 @@
 
         </RelativeLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/fl"
             android:visibility="visible"
             android:layout_width="match_parent"
@@ -57,40 +58,203 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/buttonTurnCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
                     android:layout_margin="20dp"
                     app:fabSize="normal"
                     android:src="@drawable/icon_change" />
 
-<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                    android:id="@+id/buttonStopCamera"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="end|bottom"-->
-<!--                    android:layout_margin="20dp"-->
-<!--                    app:fabSize="mini"-->
-<!--                    android:src="@drawable/icon_stop" />-->
+        </RelativeLayout>
 
-<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                    android:id="@+id/buttonStartCamera"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="end|bottom"-->
-<!--                    android:layout_margin="20dp"-->
-<!--                    app:fabSize="mini"-->
-<!--                    android:src="@drawable/icon_play"/>-->
-            </FrameLayout>
-        </FrameLayout>
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl">
 
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@color/white"
+                android:fitsSystemWindows="true">
+
+                <RelativeLayout
+                    android:id="@+id/rlN"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/r1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvAT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Alert Type"
+                            android:fontFamily="@font/n_bold"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/vAT"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tvAT"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="#DEDBDB" />
+
+                        <CheckBox
+                            android:id="@+id/cK"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/vAT"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:checked="false"
+                            android:fontFamily="@font/n_regular"
+                            android:text="Closed Eyes"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <CheckBox
+                            android:id="@+id/cY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cK"
+                            android:layout_marginStart="16dp"
+                            android:checked="false"
+                            android:text="Yawning"
+                            android:fontFamily="@font/n_regular"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <CheckBox
+                            android:id="@+id/cD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cY"
+                            android:layout_marginStart="16dp"
+                            android:checked="false"
+                            android:text="Distraction"
+                            android:fontFamily="@font/n_regular"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvAV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cD"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Alert Volume"
+                            android:fontFamily="@font/n_bold"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/vAV"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tvAV"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="#DEDBDB" />
+
+                        <LinearLayout
+                            android:id="@+id/ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/vAV"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/volume_down"
+                                app:tint="#A4A4A4" />
+
+                            <SeekBar
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:progressDrawable="@drawable/seek_bar"
+                                android:thumb="@drawable/seek_thumb" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/vAV1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/ll"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="22dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="#DEDBDB" />
+
+                        <TextView
+                            android:id="@+id/tvD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/vAV1"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Dashboard"
+                            android:fontFamily="@font/n_bold"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/vD"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tvD"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="#DEDBDB" />
+
+                        <TextView
+                            android:id="@+id/tvL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/vD"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Logout"
+                            android:fontFamily="@font/n_bold"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.navigation.NavigationView>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
 
 
     </RelativeLayout>

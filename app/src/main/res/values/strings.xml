@@ -7,4 +7,7 @@
     <string name="test"><u><b>Sign Up</b></u></string>
 
     <string name="login_have_account">Do not have an account?Click here to SignUp</string>
+
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>

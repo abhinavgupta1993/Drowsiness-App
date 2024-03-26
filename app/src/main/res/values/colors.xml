@@ -15,4 +15,9 @@
     <color name="switch_color_on">#9EEC9C</color>
     <color name="switch_color_off">#EC9C9C</color>
     <color name="switch_color_thumb">#F5F8F9</color>
+
+
+    <color name="seek_bar_background">#ababab</color>
+    <color name="seek_bar_progress">#ffb600</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
 </resources>

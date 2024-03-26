@@ -1,32 +1,89 @@
 package com.drowsiness.ai.views.activities
 
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import com.drowsiness.ai.R
 import com.drowsiness.ai.databinding.ActivityHomeBinding
 import com.drowsiness.ai.facedetection.camera.CameraManager
+import com.drowsiness.ai.helper.DetectionHelper
 import com.drowsiness.ai.viewModel.viewmodels.HomeViewModel
 
-class HomeActivity : AppCompatActivity() {
+
+class HomeActivity : AppCompatActivity(), DetectionHelper {
 
     private lateinit var cameraManager: CameraManager
     lateinit var homeBinding: ActivityHomeBinding
     lateinit var homeViewModel: HomeViewModel
+    private var actionBarDrawerToggle: ActionBarDrawerToggle? = null
+    private var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+
+        actionBarDrawerToggle = ActionBarDrawerToggle(
+            this,
+            homeBinding.drawerLayout,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
+
+        homeBinding.drawerLayout.addDrawerListener(actionBarDrawerToggle!!)
+        actionBarDrawerToggle?.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        homeBinding.openMenu.setOnClickListener {
+            when (count) {
+                0 -> {
+                    homeBinding.drawerLayout.openDrawer(GravityCompat.END)
+                    count = 1
+                }
+
+                1 -> {
+                    homeBinding.drawerLayout.closeDrawer(GravityCompat.END)
+                    count = 0
+                }
+            }
+        }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                homeBinding.drawerLayout.closeDrawer(GravityCompat.END)
+            }
+        })
+
+
         cameraManager = CameraManager(
             this,
             homeBinding.viewCameraPreview,
             homeBinding.viewGraphicOverlay,
             this
         )
+
+        homeBinding.onOffCamera.setOnCheckedChangeListener { _, isChecked ->
+
+            when (isChecked) {
+                true -> {
+                    homeBinding.fl.visibility = View.VISIBLE
+                    cameraManager.cameraStart()
+                }
+
+                false -> {
+                    homeBinding.fl.visibility = View.GONE
+                    cameraManager.cameraStop()
+                }
+
+            }
+
+        }
         askCameraPermission()
         buttonClicks()
     }
@@ -80,4 +137,17 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this, "Camera Permission Denied!", Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun checkYawningCount(yawningCount: Int) {
+
+    }
+
+    override fun checkEyesCount(eyesCount: Int) {
+
+    }
+
+    override fun checkDistractionCount(distractionCount: Int) {
+
+    }
+
 }
