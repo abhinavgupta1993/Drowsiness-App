@@ -1,5 +1,6 @@
 package com.drowsiness.ai.views.activities
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
@@ -52,6 +53,10 @@ class HomeActivity : AppCompatActivity(), DetectionHelper {
                     count = 0
                 }
             }
+        }
+
+        homeBinding.tvDashboard.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, DashboardActivity::class.java))
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

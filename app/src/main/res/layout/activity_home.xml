@@ -214,7 +214,7 @@
                             android:background="#DEDBDB" />
 
                         <TextView
-                            android:id="@+id/tvD"
+                            android:id="@+id/tvDashboard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/vAV1"
@@ -230,7 +230,7 @@
                             android:id="@+id/vD"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/tvD"
+                            android:layout_below="@+id/tvDashboard"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
@@ -248,12 +248,10 @@
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
+
                     </RelativeLayout>
-
                 </RelativeLayout>
-
             </com.google.android.material.navigation.NavigationView>
-
         </androidx.drawerlayout.widget.DrawerLayout>
 
 

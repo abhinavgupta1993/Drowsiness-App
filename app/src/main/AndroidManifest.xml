@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -19,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DrowsinessApp.NoAction"
         tools:targetApi="31">
+        <activity
+            android:name=".views.activities.DashboardActivity"
+            android:exported="false" />
         <activity
             android:name=".views.activities.HomeActivity"
             android:exported="true">
@@ -40,11 +45,10 @@
         <activity
             android:name=".views.activities.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.DrowsinessApp.NoAction">
-
-        </activity>
+            android:theme="@style/Theme.DrowsinessApp.NoAction"></activity>
         <activity
             android:name=".views.activities.GetStartedActivity"
             android:exported="false" />
     </application>
+
 </manifest>
