@@ -60,8 +60,6 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
 
-    kapt ("androidx.databinding:databinding-compiler:8.3.0")
-
     // Face Detection
     implementation ("com.google.mlkit:face-detection:16.1.6")
 
@@ -76,5 +74,6 @@ dependencies {
 
     // CameraSource
     implementation ("com.google.android.gms:play-services-vision-common:19.1.3")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="GetStarted"
+            type="com.drowsiness.ai.views.activities.GetStartedActivity" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/aaimg">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:focusable="false"
+                android:layout_gravity="center"
+                android:layout_marginTop="26dp"
+                android:scaleType="fitCenter"
+                android:foregroundGravity="center"
+                android:src="@drawable/shoimg1" />
+
+        <LinearLayout
+            android:id="@+id/rl_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/logo"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:gravity="center"
+                android:text="Keep Your Eyes on the Road"
+                android:textColor="@color/seek_bar_background"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Driving Focus Check"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:id="@+id/rl_number"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="55dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:layout_width="35dp"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/dot1bg" />
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/dot2bg" />
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/dot2bg" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="53dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/group_4" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
