@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="dashboardActivity"
+            type="com.drowsiness.ai.viewModel.viewmodels.DashboardViewModel" />
 
     </data>
 
@@ -17,6 +19,7 @@
             android:background="@color/purple_700">
 
             <ImageView
+                android:id="@+id/back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
@@ -27,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dashboard"
+                android:fontFamily="@font/n_bold"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"
                 android:textSize="18sp"
@@ -34,12 +38,159 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rl">
+            android:layout_below="@+id/rl"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:stretchMode="columnWidth"
+            android:weightSum="3">
 
-        </RelativeLayout>
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/rectangle_focus"
+                android:gravity="center"
+                android:text="Focus \n 35%"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/n_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/rectangle_distracted"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/n_bold"
+                android:layout_weight="1"
+                android:text="Distracted \n 40%"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rectangle_sleeping"
+                android:gravity="center"
+                android:fontFamily="@font/n_bold"
+                android:text="Sleeping \n 25%"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/ll"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="32dp" />
+
+        <LinearLayout
+            android:id="@+id/ll3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pieChart"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/box_blue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Focus"
+                    android:fontFamily="@font/n_bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/box_pink" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Distracted"
+                    android:fontFamily="@font/n_bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/box_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Sleeping"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/n_bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btExport"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rectangle_export"
+            android:gravity="center"
+            android:text="Export"
+            android:fontFamily="@font/n_bold"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 </layout>
